@@ -42,6 +42,34 @@ from detectron.datasets.json_dataset import JsonDataset
 from detectron.utils.logging import setup_logging
 import detectron.core.config as core_config
 
+# Usage:
+
+# Re-evaluate previously-inferred detections (stored in `output_dir`) on a given dataset
+# Note: `output_dir` must be full path to dir containing `detections.pkl`
+# reval.py \
+#   [path/to/results/directory (must contain `detections.pkl`] \
+#   --dataset [name of dataset (must be in `datasets/dataset_catalog.py`)] 
+
+# Provide an optional config file
+# reval.py \
+#   [path/to/results/directory (must contain `detections.pkl`] \
+#   --dataset [name of dataset (must be in `datasets/dataset_catalog.py`)] \ 
+#   --cfg [path/to/rpn/config.yaml]
+
+# Use Matlab for evaluation
+# reval.py \
+#   [path/to/results/directory (must contain `detections.pkl`] \
+#   --dataset [name of dataset (must be in `datasets/dataset_catalog.py`)] \ 
+#   --cfg [path/to/rpn/config.yaml] \
+#   --matlab
+
+# Run in competition mode (detection results files will be saved)
+# (Normally, these files are cleaned up after local eval as they can be large)
+# reval.py \
+#   [path/to/results/directory (must contain `detections.pkl`] \
+#   --dataset [name of dataset (must be in `datasets/dataset_catalog.py`)] \ 
+#   --cfg [path/to/rpn/config.yaml] \
+#   --comp
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Re-evaluate results')
